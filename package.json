@@ -7,7 +7,10 @@
     "template-typescript-cli": "lib/index.js"
   },
   "description": "Cool cli package.",
-  "keywords": ["cool", "cli"],
+  "keywords": [
+    "cool",
+    "cli"
+  ],
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
@@ -79,6 +82,8 @@
     }
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

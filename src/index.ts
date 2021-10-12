@@ -52,26 +52,24 @@ const nodes: GraphRaw[] = [
 ];
 
 yargs
-  .command(
+  .command<{ distance?: number }>(
     'run',
     'print a test message',
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    () => {},
-    () => {
+    (yargs) => {
+      yargs.option('distance', {
+        alias: 'd',
+        number: true,
+        describe: 'The node distance',
+      });
+    },
+    (args) => {
+      const distance = args.distance ?? Infinity;
       const graph = toGraphMap(nodes);
 
-      const tables = toTable(graph);
+      const tables = toTable(graph, distance);
 
       console.log(tables.join('\n'));
-    },
-  )
-  .command(
-    'do-something',
-    'print a test message',
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    () => {},
-    () => {
-      console.log('Hello, world!');
     },
   )
   .alias('h', 'help')
